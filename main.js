@@ -16,7 +16,11 @@ async function main(path) {
   if (data) {
     if (commandArgs.format === "html") {
       convertedMd = convertMarkdown(data, conversionsHTML);
-    } else {
+    } else if (commandArgs.format === "ansi") {
+      convertedMd = convertMarkdown(data, conversionsAnsi);
+    } else if (!commandArgs.format && commandArgs.outputFile) {
+      convertedMd = convertMarkdown(data, conversionsHTML);
+    } else if (!commandArgs.outputFile && !commandArgs.format) {
       convertedMd = convertMarkdown(data, conversionsAnsi);
     }
   } else {
