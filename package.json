@@ -1,5 +1,15 @@
 {
   "dependencies": {
     "jest": "^29.7.0"
-  }
+  },
+  "name": "lab2",
+  "description": "Lab2 with format ansi",
+  "version": "1.0.0",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC"
 }

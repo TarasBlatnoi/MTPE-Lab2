@@ -1,0 +1,4 @@
+node main markdown.md |— ANSI to console
+node main markdown.md --out index.html |— HTML to file
+node main markdown.md --out fileWithAnsi --format ansi |— ansi to file
+node main markdown.md --format html |— html to console

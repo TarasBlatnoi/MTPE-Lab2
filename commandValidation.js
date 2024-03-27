@@ -1,22 +1,28 @@
 function commandValidation(args) {
-  const path = args[0];
-  if (!path) {
-    console.log("Provide a md file");
-    return;
-  }
-  let outputFlag = false;
-  let outputFile = null;
-  if (args[1] === "--out" && args[2]) {
-    if (args[2].endsWith(".html")) {
-      outputFlag = true;
-      outputFile = args[2];
-    } else {
-      console.log("No output flag or bad filename");
+  const commandArgs = args.slice(2);
+  const path = commandArgs[0];
+  const outputFlag = commandArgs.indexOf("--out");
+  const formatFlag = commandArgs.indexOf("--format");
+  let format = "";
+  let outputFile = "";
+  if (formatFlag !== -1) {
+    format = commandArgs[formatFlag + 1];
+    if (format !== "html" && format !== "ansi") {
+      console.log("wrong format");
+      throw new Error("wrong format");
     }
-  } else {
-    console.log("No output flag or no file after it");
   }
-  return { path, outputFile };
+  if (outputFlag !== -1) {
+    outputFile = commandArgs[outputFlag + 1];
+    if (format !== "ansi" && !outputFile.endsWith(".html")) {
+      console.log("wrong file");
+      throw new Error(
+        "you have chosen html format but gave file  name without .html extension"
+      );
+    }
+  }
+
+  return { path, outputFile, format };
 }
 
 module.exports = { commandValidation };

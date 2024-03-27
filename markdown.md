@@ -6,12 +6,11 @@ This is an example Markdown file with various formatting options:
 
 `someText`
 
- **Some other bold text**
+**Some other bold text**
 
 snake_case
 
-
-  _Italic text_
+_Italic text_
 
 `Monospaced text`
 
