@@ -8,14 +8,12 @@ function commandValidation(args) {
   if (formatFlag !== -1) {
     format = commandArgs[formatFlag + 1];
     if (format !== "html" && format !== "ansi") {
-      console.log("wrong format");
       throw new Error("wrong format");
     }
   }
   if (outputFlag !== -1) {
     outputFile = commandArgs[outputFlag + 1];
     if (format !== "ansi" && !outputFile.endsWith(".html")) {
-      console.log("wrong file");
       throw new Error(
         "you have chosen html format but gave file  name without .html extension"
       );
