@@ -1,6 +1,6 @@
 const wrongPatterns = [
   {
-    pattern: /wrong pattern/g,
+    pattern: /\*\*.*(\`|\_|(\*\*)).*(\`|\_|(\*\*)).*\*\*/g,
   },
   {
     pattern: /\_.*(\`|\_|(\*\*)).*(\`|\_|(\*\*)).*\_/g,
