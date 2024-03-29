@@ -1,8 +1,7 @@
 const fs = require("fs").promises;
 async function checkMdPath(path) {
   if (!path.endsWith(".md")) {
-    console.log("Not a Markdown file.");
-    return;
+    throw new Error("not md file");
   }
   try {
     const stats = await fs.stat(path);
@@ -13,16 +12,14 @@ async function checkMdPath(path) {
       );
       return path;
     } else {
-      console.log("File exists but is empty.");
-      return;
+      throw new Error("File exists but is empty.");
     }
   } catch (err) {
     if (err.code === "ENOENT") {
-      console.log("Wrong path to md file");
+      throw new Error("Wrong path to md file");
     } else {
-      console.error("Error reading file:", err);
+      throw new Error("Error reading file:");
     }
-    return;
   }
 }
 
