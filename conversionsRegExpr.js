@@ -10,21 +10,17 @@ const conversionsHTML = {
       pattern: /\*\*([^ ])\*\*/g,
       replacement: "<b>$1</b>",
     },
-    { pattern: /\_([^ ].*[^ ])\_/g, replacement: "<em>$1</em>" },
-    { pattern: /\_([^ ])\_/g, replacement: "<em>$1</em>" },
-    { pattern: /\`([^ ].*[^ ])\`/g, replacement: "<tt>$1</tt>" },
-    { pattern: /\`([^ ])\`/g, replacement: "<tt>$1</tt>" },
+    { pattern: /\_([^ ].*[^ ])\_/g, replacement: " <em>$1</em> " },
+    { pattern: /\_([^ ])\_/g, replacement: " <em>$1</em> " },
+    { pattern: /\`([^ ].*[^ ])\`/g, replacement: " <tt>$1</tt> " },
+    { pattern: /\`([^ ])\`/g, replacement: " <tt>$1</tt> " },
   ],
 };
 
 const conversionsAnsi = {
   type: "ANSI",
   regExp: [
-    {
-      pattern: /\`\`\`([\s\S]+?)\`\`\`/g,
-      replacement:
-        "\x1b[7mPREFORMATED_PLACEHOLDER$1PREFORMATED_PLACEHOLDER\x1b[0m",
-    },
+    { pattern: /\`\`\`([\s\S]+?)\`\`\`/g, replacement: "$1" },
     {
       pattern: /\*\*([^ ].*[^ ])\*\*/g,
       replacement: "\x1b[1m$1\x1b[0m",
@@ -35,7 +31,7 @@ const conversionsAnsi = {
     },
     { pattern: /\_([^ ].*[^ ])\_/g, replacement: "\x1b[3m$1\x1b[0m" },
     { pattern: /\_([^ ])\_/g, replacement: "\x1b[3m$1\x1b[0m" },
-    { pattern: /\`([^ ].*[^ ])\`/g, replacement: "\x1b[7m$1\x1b[0m" },
+    { pattern: /\`([^ ].*[^ ])\`/g, replacement: "\x1b[3m$1\x1b[0m" },
     { pattern: /\`([^ ])\`/g, replacement: "\x1b[7m$1\x1b[0m" },
   ],
 };
